@@ -48,4 +48,38 @@ public class AnimalServiceImpl extends AnimalServiceGrpc.AnimalServiceImplBase {
         }
 
     }
+
+    @Override
+    public StreamObserver<AnimalLongReq> setLongClasses(StreamObserver<AnimalLongRes> responseObserver) {
+        StreamObserver<AnimalLongReq> requestObserver = new StreamObserver<AnimalLongReq>() {
+
+            String result = "";
+
+            @Override
+            public void onNext(AnimalLongReq value) {
+//            client send a message
+              result += "Animal name is " + value.getAnimal().getName() + "! ";
+            }
+
+            @Override
+            public void onError(Throwable t) {
+//            client send a error
+            }
+
+            @Override
+            public void onCompleted() {
+//            client is done
+            responseObserver.onNext(
+                    AnimalLongRes.newBuilder()
+                            .setResult(result)
+                            .build()
+            );
+
+            responseObserver.onCompleted();
+//            this is when we want to return a response (response observer)
+            }
+        };
+
+        return requestObserver;
+    }
 }

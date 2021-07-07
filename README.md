@@ -15,3 +15,11 @@
       rpc setManyTimesClasses(AnimalManyTimesReq) returns (stream AnimalManyTimesRes);
     }
 ```
+
+### Server Streaming
+```protobuf
+    service AnimalService {
+      // Client Streaming
+      rpc setLongClasses(stream AnimalLongReq) returns (AnimalLongRes);
+    }
+```
