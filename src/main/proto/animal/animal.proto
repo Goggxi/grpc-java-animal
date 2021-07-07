@@ -34,14 +34,25 @@ message AnimalLongRes {
   string result = 1;
 }
 
+message AnimalEveryoneReq{
+  Animal animal = 1;
+}
+
+message AnimalEveryoneRes {
+  string result = 1;
+}
+
 service AnimalService {
   // Unary
-  rpc setClasses(AnimalReq) returns (AnimalRes);
+  rpc setClasses(AnimalReq) returns (AnimalRes) {};
 
   // Server Streaming
-  rpc setManyTimesClasses(AnimalManyTimesReq) returns (stream AnimalManyTimesRes);
+  rpc setManyTimesClasses(AnimalManyTimesReq) returns (stream AnimalManyTimesRes) {};
 
   // Client Streaming
-  rpc setLongClasses(stream AnimalLongReq) returns (AnimalLongRes);
+  rpc setLongClasses(stream AnimalLongReq) returns (AnimalLongRes) {};
+
+  // BiDi Streaming
+  rpc setClassesEveryone(stream AnimalEveryoneReq) returns (stream AnimalEveryoneRes) {};
 }
 

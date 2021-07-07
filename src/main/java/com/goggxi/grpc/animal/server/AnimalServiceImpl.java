@@ -4,6 +4,7 @@ import com.proto.animal.*;
 import io.grpc.stub.StreamObserver;
 
 public class AnimalServiceImpl extends AnimalServiceGrpc.AnimalServiceImplBase {
+
     @Override
     public void setClasses(AnimalReq request, StreamObserver<AnimalRes> responseObserver) {
 //        extract the field we need
@@ -81,5 +82,32 @@ public class AnimalServiceImpl extends AnimalServiceGrpc.AnimalServiceImplBase {
         };
 
         return requestObserver;
+    }
+
+    @Override
+    public StreamObserver<AnimalEveryoneReq> setClassesEveryone(StreamObserver<AnimalEveryoneRes> responseObserver) {
+        StreamObserver<AnimalEveryoneReq> reqStreamObserver = new StreamObserver<AnimalEveryoneReq>() {
+            @Override
+            public void onNext(AnimalEveryoneReq value) {
+                String response = "Animals name "  + value.getAnimal().getName();
+                AnimalEveryoneRes everyoneRes = AnimalEveryoneRes.newBuilder()
+                        .setResult(response)
+                        .build();
+
+                responseObserver.onNext(everyoneRes);
+            }
+
+            @Override
+            public void onError(Throwable t) {
+//              do nothing
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        };
+
+        return reqStreamObserver;
     }
 }

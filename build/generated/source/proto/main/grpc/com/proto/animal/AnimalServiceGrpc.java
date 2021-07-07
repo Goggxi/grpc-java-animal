@@ -107,6 +107,37 @@ public final class AnimalServiceGrpc {
     return getSetLongClassesMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.proto.animal.AnimalEveryoneReq,
+      com.proto.animal.AnimalEveryoneRes> getSetClassesEveryoneMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "setClassesEveryone",
+      requestType = com.proto.animal.AnimalEveryoneReq.class,
+      responseType = com.proto.animal.AnimalEveryoneRes.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<com.proto.animal.AnimalEveryoneReq,
+      com.proto.animal.AnimalEveryoneRes> getSetClassesEveryoneMethod() {
+    io.grpc.MethodDescriptor<com.proto.animal.AnimalEveryoneReq, com.proto.animal.AnimalEveryoneRes> getSetClassesEveryoneMethod;
+    if ((getSetClassesEveryoneMethod = AnimalServiceGrpc.getSetClassesEveryoneMethod) == null) {
+      synchronized (AnimalServiceGrpc.class) {
+        if ((getSetClassesEveryoneMethod = AnimalServiceGrpc.getSetClassesEveryoneMethod) == null) {
+          AnimalServiceGrpc.getSetClassesEveryoneMethod = getSetClassesEveryoneMethod =
+              io.grpc.MethodDescriptor.<com.proto.animal.AnimalEveryoneReq, com.proto.animal.AnimalEveryoneRes>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "setClassesEveryone"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proto.animal.AnimalEveryoneReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proto.animal.AnimalEveryoneRes.getDefaultInstance()))
+              .setSchemaDescriptor(new AnimalServiceMethodDescriptorSupplier("setClassesEveryone"))
+              .build();
+        }
+      }
+    }
+    return getSetClassesEveryoneMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -185,6 +216,16 @@ public final class AnimalServiceGrpc {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getSetLongClassesMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     * BiDi Streaming
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<com.proto.animal.AnimalEveryoneReq> setClassesEveryone(
+        io.grpc.stub.StreamObserver<com.proto.animal.AnimalEveryoneRes> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getSetClassesEveryoneMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -208,6 +249,13 @@ public final class AnimalServiceGrpc {
                 com.proto.animal.AnimalLongReq,
                 com.proto.animal.AnimalLongRes>(
                   this, METHODID_SET_LONG_CLASSES)))
+          .addMethod(
+            getSetClassesEveryoneMethod(),
+            io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+              new MethodHandlers<
+                com.proto.animal.AnimalEveryoneReq,
+                com.proto.animal.AnimalEveryoneRes>(
+                  this, METHODID_SET_CLASSES_EVERYONE)))
           .build();
     }
   }
@@ -257,6 +305,17 @@ public final class AnimalServiceGrpc {
         io.grpc.stub.StreamObserver<com.proto.animal.AnimalLongRes> responseObserver) {
       return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
           getChannel().newCall(getSetLongClassesMethod(), getCallOptions()), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * BiDi Streaming
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<com.proto.animal.AnimalEveryoneReq> setClassesEveryone(
+        io.grpc.stub.StreamObserver<com.proto.animal.AnimalEveryoneRes> responseObserver) {
+      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
+          getChannel().newCall(getSetClassesEveryoneMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -325,6 +384,7 @@ public final class AnimalServiceGrpc {
   private static final int METHODID_SET_CLASSES = 0;
   private static final int METHODID_SET_MANY_TIMES_CLASSES = 1;
   private static final int METHODID_SET_LONG_CLASSES = 2;
+  private static final int METHODID_SET_CLASSES_EVERYONE = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -364,6 +424,9 @@ public final class AnimalServiceGrpc {
         case METHODID_SET_LONG_CLASSES:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.setLongClasses(
               (io.grpc.stub.StreamObserver<com.proto.animal.AnimalLongRes>) responseObserver);
+        case METHODID_SET_CLASSES_EVERYONE:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.setClassesEveryone(
+              (io.grpc.stub.StreamObserver<com.proto.animal.AnimalEveryoneRes>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -418,6 +481,7 @@ public final class AnimalServiceGrpc {
               .addMethod(getSetClassesMethod())
               .addMethod(getSetManyTimesClassesMethod())
               .addMethod(getSetLongClassesMethod())
+              .addMethod(getSetClassesEveryoneMethod())
               .build();
         }
       }

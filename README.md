@@ -23,3 +23,11 @@
       rpc setLongClasses(stream AnimalLongReq) returns (AnimalLongRes);
     }
 ```
+
+### Bi-Directional Streaming
+```protobuf
+    service AnimalService {
+      // BiDi Streaming
+      rpc setClassesEveryone(stream AnimalEveryoneReq) returns (stream AnimalEveryoneRes);
+    }
+```
