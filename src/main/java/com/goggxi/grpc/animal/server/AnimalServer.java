@@ -12,6 +12,7 @@ public class AnimalServer {
 
         Server server = ServerBuilder
                 .forPort(50052)
+                .addService(new AnimalServiceImpl())
                 .build();
 
         server.start();

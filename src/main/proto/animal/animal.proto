@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package animal;
+
+option java_package = "com.proto.animal";
+option java_multiple_files = true;
+
+message Animal {
+  string name = 1;
+  string classes = 2;
+}
+
+message AnimalReq {
+  Animal animal = 1;
+}
+
+message AnimalRes {
+  string result = 1;
+}
+
+service AnimalService {
+  // Unary
+  rpc getClasses(AnimalReq) returns (AnimalRes);
+}
+
