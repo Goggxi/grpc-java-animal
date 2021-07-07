@@ -18,8 +18,19 @@ message AnimalRes {
   string result = 1;
 }
 
+message AnimalManyTimesReq {
+  Animal animal = 1;
+}
+
+message AnimalManyTimesRes {
+  string result = 1;
+}
+
 service AnimalService {
   // Unary
-  rpc getClasses(AnimalReq) returns (AnimalRes);
+  rpc setClasses(AnimalReq) returns (AnimalRes);
+
+  // Server Streaming
+  rpc setManyTimesClasses(AnimalManyTimesReq) returns (stream AnimalManyTimesRes);
 }
 

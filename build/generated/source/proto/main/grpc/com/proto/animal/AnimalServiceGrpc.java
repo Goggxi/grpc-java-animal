@@ -15,34 +15,65 @@ public final class AnimalServiceGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<com.proto.animal.AnimalReq,
-      com.proto.animal.AnimalRes> getGetClassesMethod;
+      com.proto.animal.AnimalRes> getSetClassesMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "getClasses",
+      fullMethodName = SERVICE_NAME + '/' + "setClasses",
       requestType = com.proto.animal.AnimalReq.class,
       responseType = com.proto.animal.AnimalRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<com.proto.animal.AnimalReq,
-      com.proto.animal.AnimalRes> getGetClassesMethod() {
-    io.grpc.MethodDescriptor<com.proto.animal.AnimalReq, com.proto.animal.AnimalRes> getGetClassesMethod;
-    if ((getGetClassesMethod = AnimalServiceGrpc.getGetClassesMethod) == null) {
+      com.proto.animal.AnimalRes> getSetClassesMethod() {
+    io.grpc.MethodDescriptor<com.proto.animal.AnimalReq, com.proto.animal.AnimalRes> getSetClassesMethod;
+    if ((getSetClassesMethod = AnimalServiceGrpc.getSetClassesMethod) == null) {
       synchronized (AnimalServiceGrpc.class) {
-        if ((getGetClassesMethod = AnimalServiceGrpc.getGetClassesMethod) == null) {
-          AnimalServiceGrpc.getGetClassesMethod = getGetClassesMethod =
+        if ((getSetClassesMethod = AnimalServiceGrpc.getSetClassesMethod) == null) {
+          AnimalServiceGrpc.getSetClassesMethod = getSetClassesMethod =
               io.grpc.MethodDescriptor.<com.proto.animal.AnimalReq, com.proto.animal.AnimalRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "getClasses"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "setClasses"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.proto.animal.AnimalReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.proto.animal.AnimalRes.getDefaultInstance()))
-              .setSchemaDescriptor(new AnimalServiceMethodDescriptorSupplier("getClasses"))
+              .setSchemaDescriptor(new AnimalServiceMethodDescriptorSupplier("setClasses"))
               .build();
         }
       }
     }
-    return getGetClassesMethod;
+    return getSetClassesMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.proto.animal.AnimalManyTimesReq,
+      com.proto.animal.AnimalManyTimesRes> getSetManyTimesClassesMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "setManyTimesClasses",
+      requestType = com.proto.animal.AnimalManyTimesReq.class,
+      responseType = com.proto.animal.AnimalManyTimesRes.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<com.proto.animal.AnimalManyTimesReq,
+      com.proto.animal.AnimalManyTimesRes> getSetManyTimesClassesMethod() {
+    io.grpc.MethodDescriptor<com.proto.animal.AnimalManyTimesReq, com.proto.animal.AnimalManyTimesRes> getSetManyTimesClassesMethod;
+    if ((getSetManyTimesClassesMethod = AnimalServiceGrpc.getSetManyTimesClassesMethod) == null) {
+      synchronized (AnimalServiceGrpc.class) {
+        if ((getSetManyTimesClassesMethod = AnimalServiceGrpc.getSetManyTimesClassesMethod) == null) {
+          AnimalServiceGrpc.getSetManyTimesClassesMethod = getSetManyTimesClassesMethod =
+              io.grpc.MethodDescriptor.<com.proto.animal.AnimalManyTimesReq, com.proto.animal.AnimalManyTimesRes>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "setManyTimesClasses"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proto.animal.AnimalManyTimesReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proto.animal.AnimalManyTimesRes.getDefaultInstance()))
+              .setSchemaDescriptor(new AnimalServiceMethodDescriptorSupplier("setManyTimesClasses"))
+              .build();
+        }
+      }
+    }
+    return getSetManyTimesClassesMethod;
   }
 
   /**
@@ -98,20 +129,37 @@ public final class AnimalServiceGrpc {
      * Unary
      * </pre>
      */
-    public void getClasses(com.proto.animal.AnimalReq request,
+    public void setClasses(com.proto.animal.AnimalReq request,
         io.grpc.stub.StreamObserver<com.proto.animal.AnimalRes> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetClassesMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSetClassesMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Server Streaming
+     * </pre>
+     */
+    public void setManyTimesClasses(com.proto.animal.AnimalManyTimesReq request,
+        io.grpc.stub.StreamObserver<com.proto.animal.AnimalManyTimesRes> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSetManyTimesClassesMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getGetClassesMethod(),
+            getSetClassesMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 com.proto.animal.AnimalReq,
                 com.proto.animal.AnimalRes>(
-                  this, METHODID_GET_CLASSES)))
+                  this, METHODID_SET_CLASSES)))
+          .addMethod(
+            getSetManyTimesClassesMethod(),
+            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+              new MethodHandlers<
+                com.proto.animal.AnimalManyTimesReq,
+                com.proto.animal.AnimalManyTimesRes>(
+                  this, METHODID_SET_MANY_TIMES_CLASSES)))
           .build();
     }
   }
@@ -135,10 +183,21 @@ public final class AnimalServiceGrpc {
      * Unary
      * </pre>
      */
-    public void getClasses(com.proto.animal.AnimalReq request,
+    public void setClasses(com.proto.animal.AnimalReq request,
         io.grpc.stub.StreamObserver<com.proto.animal.AnimalRes> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getGetClassesMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getSetClassesMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Server Streaming
+     * </pre>
+     */
+    public void setManyTimesClasses(com.proto.animal.AnimalManyTimesReq request,
+        io.grpc.stub.StreamObserver<com.proto.animal.AnimalManyTimesRes> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getSetManyTimesClassesMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -161,9 +220,20 @@ public final class AnimalServiceGrpc {
      * Unary
      * </pre>
      */
-    public com.proto.animal.AnimalRes getClasses(com.proto.animal.AnimalReq request) {
+    public com.proto.animal.AnimalRes setClasses(com.proto.animal.AnimalReq request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getGetClassesMethod(), getCallOptions(), request);
+          getChannel(), getSetClassesMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Server Streaming
+     * </pre>
+     */
+    public java.util.Iterator<com.proto.animal.AnimalManyTimesRes> setManyTimesClasses(
+        com.proto.animal.AnimalManyTimesReq request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getSetManyTimesClassesMethod(), getCallOptions(), request);
     }
   }
 
@@ -186,14 +256,15 @@ public final class AnimalServiceGrpc {
      * Unary
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.proto.animal.AnimalRes> getClasses(
+    public com.google.common.util.concurrent.ListenableFuture<com.proto.animal.AnimalRes> setClasses(
         com.proto.animal.AnimalReq request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getGetClassesMethod(), getCallOptions()), request);
+          getChannel().newCall(getSetClassesMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_GET_CLASSES = 0;
+  private static final int METHODID_SET_CLASSES = 0;
+  private static final int METHODID_SET_MANY_TIMES_CLASSES = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -212,9 +283,13 @@ public final class AnimalServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_GET_CLASSES:
-          serviceImpl.getClasses((com.proto.animal.AnimalReq) request,
+        case METHODID_SET_CLASSES:
+          serviceImpl.setClasses((com.proto.animal.AnimalReq) request,
               (io.grpc.stub.StreamObserver<com.proto.animal.AnimalRes>) responseObserver);
+          break;
+        case METHODID_SET_MANY_TIMES_CLASSES:
+          serviceImpl.setManyTimesClasses((com.proto.animal.AnimalManyTimesReq) request,
+              (io.grpc.stub.StreamObserver<com.proto.animal.AnimalManyTimesRes>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -277,7 +352,8 @@ public final class AnimalServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new AnimalServiceFileDescriptorSupplier())
-              .addMethod(getGetClassesMethod())
+              .addMethod(getSetClassesMethod())
+              .addMethod(getSetManyTimesClassesMethod())
               .build();
         }
       }
