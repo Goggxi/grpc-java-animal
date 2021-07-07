@@ -31,3 +31,13 @@
       rpc setClassesEveryone(stream AnimalEveryoneReq) returns (stream AnimalEveryoneRes);
     }
 ```
+
+### Error Documentation
+```protobuf
+    service CalculatorService {
+    // error handling
+    // this RPC will throw an exception if the sent number is negative
+    // The error being sent is of type INVALID_ARGUMENT
+    rpc SquareRoot(SquareRootRequest) returns (SquareRootResponse) {};
+    }
+```
