@@ -16,7 +16,7 @@
     }
 ```
 
-### Server Streaming
+### Client Streaming
 ```protobuf
     service AnimalService {
       // Client Streaming

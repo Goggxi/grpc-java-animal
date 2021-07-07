@@ -58,7 +58,7 @@ public class AnimalServiceImpl extends AnimalServiceGrpc.AnimalServiceImplBase {
             @Override
             public void onNext(AnimalLongReq value) {
 //            client send a message
-              result += "Animal name is " + value.getAnimal().getName() + "! ";
+              result += "Animal name is " + value.getAnimal().getName() + "! \n";
             }
 
             @Override
