@@ -3,36 +3,46 @@ package com.goggxi.grpc.animal.client;
 import com.proto.animal.*;
 import com.proto.dummy.DummyServiceGrpc;
 import io.grpc.*;
+import io.grpc.netty.shaded.io.grpc.netty.GrpcSslContexts;
+import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
+import javax.net.ssl.SSLException;
+import java.io.File;
 import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public class AnimalClient {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SSLException {
         AnimalClient main = new AnimalClient();
         main.run();
     }
 
-    private void run() {
+    private void run() throws SSLException {
 
         System.out.println("Hallo im client");
 
-        ManagedChannel channel = ManagedChannelBuilder
-                .forAddress("localhost", 50052)
-                .usePlaintext() // devs
+//        ManagedChannel channel = ManagedChannelBuilder
+//                .forAddress("localhost", 50052)
+//                .usePlaintext() // devs
+//                .build();
+
+        // With server authentication SSL/TLS; custom CA root certificates; not on Android
+        ManagedChannel secureChannel = NettyChannelBuilder.forAddress("localhost", 50052)
+                .sslContext(GrpcSslContexts.forClient().trustManager(new File("ssl/ca.crt")).build())
                 .build();
 
-//        doUnaryCall(channel);
+        doUnaryCall(secureChannel);
 //        doServerStreamingCall(channel);
 //        doClientStreamingCall(channel);
 //        doBidiStreamingCall(channel);
-        doUnaryCallWithDeadline(channel);
+//        doUnaryCallWithDeadline(channel);
 
         System.out.println("Shutting down channel");
-        channel.shutdown();
+//        channel.shutdown();
+        secureChannel.shutdown();
 
     }
 
