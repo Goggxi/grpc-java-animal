@@ -42,6 +42,14 @@ message AnimalEveryoneRes {
   string result = 1;
 }
 
+message AnimalWithDeadlineReq{
+  Animal animal = 1;
+}
+
+message AnimalWithDeadlineRes {
+  string result = 1;
+}
+
 service AnimalService {
   // Unary
   rpc setClasses(AnimalReq) returns (AnimalRes) {};
@@ -53,6 +61,10 @@ service AnimalService {
   rpc setLongClasses(stream AnimalLongReq) returns (AnimalLongRes) {};
 
   // BiDi Streaming
-  rpc setClassesEveryone(stream AnimalEveryoneReq) returns (stream AnimalEveryoneRes) {};
+  rpc setClassesEveryone(stream AnimalEveryoneReq) returns (stream AnimalEveryoneRes) {}
+
+  // RPC with deadline
+  // THIS RPC WILL COMPLiTE IN NO THAN LESS 300 MS
+  rpc setClassesWithDeadline(AnimalWithDeadlineReq) returns (AnimalWithDeadlineRes) {}
 }
 

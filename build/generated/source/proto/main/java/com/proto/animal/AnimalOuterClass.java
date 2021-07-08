@@ -59,6 +59,16 @@ public final class AnimalOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_animal_AnimalEveryoneRes_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_animal_AnimalWithDeadlineReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_animal_AnimalWithDeadlineReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_animal_AnimalWithDeadlineRes_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_animal_AnimalWithDeadlineRes_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -78,15 +88,20 @@ public final class AnimalOuterClass {
       "nimal\"\037\n\rAnimalLongRes\022\016\n\006result\030\001 \001(\t\"3" +
       "\n\021AnimalEveryoneReq\022\036\n\006animal\030\001 \001(\0132\016.an" +
       "imal.Animal\"#\n\021AnimalEveryoneRes\022\016\n\006resu" +
-      "lt\030\001 \001(\t2\256\002\n\rAnimalService\0224\n\nsetClasses" +
-      "\022\021.animal.AnimalReq\032\021.animal.AnimalRes\"\000" +
-      "\022Q\n\023setManyTimesClasses\022\032.animal.AnimalM" +
-      "anyTimesReq\032\032.animal.AnimalManyTimesRes\"" +
-      "\0000\001\022B\n\016setLongClasses\022\025.animal.AnimalLon" +
-      "gReq\032\025.animal.AnimalLongRes\"\000(\001\022P\n\022setCl" +
-      "assesEveryone\022\031.animal.AnimalEveryoneReq" +
-      "\032\031.animal.AnimalEveryoneRes\"\000(\0010\001B\024\n\020com" +
-      ".proto.animalP\001b\006proto3"
+      "lt\030\001 \001(\t\"7\n\025AnimalWithDeadlineReq\022\036\n\006ani" +
+      "mal\030\001 \001(\0132\016.animal.Animal\"\'\n\025AnimalWithD" +
+      "eadlineRes\022\016\n\006result\030\001 \001(\t2\210\003\n\rAnimalSer" +
+      "vice\0224\n\nsetClasses\022\021.animal.AnimalReq\032\021." +
+      "animal.AnimalRes\"\000\022Q\n\023setManyTimesClasse" +
+      "s\022\032.animal.AnimalManyTimesReq\032\032.animal.A" +
+      "nimalManyTimesRes\"\0000\001\022B\n\016setLongClasses\022" +
+      "\025.animal.AnimalLongReq\032\025.animal.AnimalLo" +
+      "ngRes\"\000(\001\022P\n\022setClassesEveryone\022\031.animal" +
+      ".AnimalEveryoneReq\032\031.animal.AnimalEveryo" +
+      "neRes\"\000(\0010\001\022X\n\026setClassesWithDeadline\022\035." +
+      "animal.AnimalWithDeadlineReq\032\035.animal.An" +
+      "imalWithDeadlineRes\"\000B\024\n\020com.proto.anima" +
+      "lP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -145,6 +160,18 @@ public final class AnimalOuterClass {
     internal_static_animal_AnimalEveryoneRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_animal_AnimalEveryoneRes_descriptor,
+        new java.lang.String[] { "Result", });
+    internal_static_animal_AnimalWithDeadlineReq_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_animal_AnimalWithDeadlineReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_animal_AnimalWithDeadlineReq_descriptor,
+        new java.lang.String[] { "Animal", });
+    internal_static_animal_AnimalWithDeadlineRes_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_animal_AnimalWithDeadlineRes_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_animal_AnimalWithDeadlineRes_descriptor,
         new java.lang.String[] { "Result", });
   }
 

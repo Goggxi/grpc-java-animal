@@ -8,7 +8,6 @@ import java.io.IOException;
 public class AnimalServer {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        System.out.println("Welcome");
 
         Server server = ServerBuilder
                 .forPort(50052)
@@ -16,6 +15,8 @@ public class AnimalServer {
                 .build();
 
         server.start();
+
+        System.out.println("Server is running on port " + server.getPort());
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             System.out.println("Received Shutdown Request");

@@ -138,6 +138,37 @@ public final class AnimalServiceGrpc {
     return getSetClassesEveryoneMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.proto.animal.AnimalWithDeadlineReq,
+      com.proto.animal.AnimalWithDeadlineRes> getSetClassesWithDeadlineMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "setClassesWithDeadline",
+      requestType = com.proto.animal.AnimalWithDeadlineReq.class,
+      responseType = com.proto.animal.AnimalWithDeadlineRes.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.proto.animal.AnimalWithDeadlineReq,
+      com.proto.animal.AnimalWithDeadlineRes> getSetClassesWithDeadlineMethod() {
+    io.grpc.MethodDescriptor<com.proto.animal.AnimalWithDeadlineReq, com.proto.animal.AnimalWithDeadlineRes> getSetClassesWithDeadlineMethod;
+    if ((getSetClassesWithDeadlineMethod = AnimalServiceGrpc.getSetClassesWithDeadlineMethod) == null) {
+      synchronized (AnimalServiceGrpc.class) {
+        if ((getSetClassesWithDeadlineMethod = AnimalServiceGrpc.getSetClassesWithDeadlineMethod) == null) {
+          AnimalServiceGrpc.getSetClassesWithDeadlineMethod = getSetClassesWithDeadlineMethod =
+              io.grpc.MethodDescriptor.<com.proto.animal.AnimalWithDeadlineReq, com.proto.animal.AnimalWithDeadlineRes>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "setClassesWithDeadline"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proto.animal.AnimalWithDeadlineReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proto.animal.AnimalWithDeadlineRes.getDefaultInstance()))
+              .setSchemaDescriptor(new AnimalServiceMethodDescriptorSupplier("setClassesWithDeadline"))
+              .build();
+        }
+      }
+    }
+    return getSetClassesWithDeadlineMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -226,6 +257,17 @@ public final class AnimalServiceGrpc {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getSetClassesEveryoneMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     * RPC with deadline
+     * THIS RPC WILL COMPLiTE IN NO THAN LESS 300 MS
+     * </pre>
+     */
+    public void setClassesWithDeadline(com.proto.animal.AnimalWithDeadlineReq request,
+        io.grpc.stub.StreamObserver<com.proto.animal.AnimalWithDeadlineRes> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSetClassesWithDeadlineMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -256,6 +298,13 @@ public final class AnimalServiceGrpc {
                 com.proto.animal.AnimalEveryoneReq,
                 com.proto.animal.AnimalEveryoneRes>(
                   this, METHODID_SET_CLASSES_EVERYONE)))
+          .addMethod(
+            getSetClassesWithDeadlineMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                com.proto.animal.AnimalWithDeadlineReq,
+                com.proto.animal.AnimalWithDeadlineRes>(
+                  this, METHODID_SET_CLASSES_WITH_DEADLINE)))
           .build();
     }
   }
@@ -317,6 +366,18 @@ public final class AnimalServiceGrpc {
       return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
           getChannel().newCall(getSetClassesEveryoneMethod(), getCallOptions()), responseObserver);
     }
+
+    /**
+     * <pre>
+     * RPC with deadline
+     * THIS RPC WILL COMPLiTE IN NO THAN LESS 300 MS
+     * </pre>
+     */
+    public void setClassesWithDeadline(com.proto.animal.AnimalWithDeadlineReq request,
+        io.grpc.stub.StreamObserver<com.proto.animal.AnimalWithDeadlineRes> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getSetClassesWithDeadlineMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -353,6 +414,17 @@ public final class AnimalServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getSetManyTimesClassesMethod(), getCallOptions(), request);
     }
+
+    /**
+     * <pre>
+     * RPC with deadline
+     * THIS RPC WILL COMPLiTE IN NO THAN LESS 300 MS
+     * </pre>
+     */
+    public com.proto.animal.AnimalWithDeadlineRes setClassesWithDeadline(com.proto.animal.AnimalWithDeadlineReq request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getSetClassesWithDeadlineMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -379,12 +451,25 @@ public final class AnimalServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSetClassesMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * RPC with deadline
+     * THIS RPC WILL COMPLiTE IN NO THAN LESS 300 MS
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.proto.animal.AnimalWithDeadlineRes> setClassesWithDeadline(
+        com.proto.animal.AnimalWithDeadlineReq request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getSetClassesWithDeadlineMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_SET_CLASSES = 0;
   private static final int METHODID_SET_MANY_TIMES_CLASSES = 1;
-  private static final int METHODID_SET_LONG_CLASSES = 2;
-  private static final int METHODID_SET_CLASSES_EVERYONE = 3;
+  private static final int METHODID_SET_CLASSES_WITH_DEADLINE = 2;
+  private static final int METHODID_SET_LONG_CLASSES = 3;
+  private static final int METHODID_SET_CLASSES_EVERYONE = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -410,6 +495,10 @@ public final class AnimalServiceGrpc {
         case METHODID_SET_MANY_TIMES_CLASSES:
           serviceImpl.setManyTimesClasses((com.proto.animal.AnimalManyTimesReq) request,
               (io.grpc.stub.StreamObserver<com.proto.animal.AnimalManyTimesRes>) responseObserver);
+          break;
+        case METHODID_SET_CLASSES_WITH_DEADLINE:
+          serviceImpl.setClassesWithDeadline((com.proto.animal.AnimalWithDeadlineReq) request,
+              (io.grpc.stub.StreamObserver<com.proto.animal.AnimalWithDeadlineRes>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -482,6 +571,7 @@ public final class AnimalServiceGrpc {
               .addMethod(getSetManyTimesClassesMethod())
               .addMethod(getSetLongClassesMethod())
               .addMethod(getSetClassesEveryoneMethod())
+              .addMethod(getSetClassesWithDeadlineMethod())
               .build();
         }
       }

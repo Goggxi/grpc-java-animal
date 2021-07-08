@@ -2,8 +2,7 @@ package com.goggxi.grpc.animal.client;
 
 import com.proto.animal.*;
 import com.proto.dummy.DummyServiceGrpc;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
+import io.grpc.*;
 import io.grpc.stub.StreamObserver;
 
 import java.util.Arrays;
@@ -29,7 +28,9 @@ public class AnimalClient {
 //        doUnaryCall(channel);
 //        doServerStreamingCall(channel);
 //        doClientStreamingCall(channel);
-        doBidiStreamingCall(channel);
+//        doBidiStreamingCall(channel);
+        doUnaryCallWithDeadline(channel);
+
         System.out.println("Shutting down channel");
         channel.shutdown();
 
@@ -195,6 +196,44 @@ public class AnimalClient {
             latch.await(3 , TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void doUnaryCallWithDeadline(ManagedChannel channel) {
+        AnimalServiceGrpc.AnimalServiceBlockingStub blockingStub = AnimalServiceGrpc.newBlockingStub(channel);
+
+//        first call (3000ms deadline)
+        try {
+            System.out.println("Sending a request with a deadline of 3000ms");
+            AnimalWithDeadlineRes res = blockingStub.withDeadline(Deadline.after(3000, TimeUnit.MILLISECONDS)).setClassesWithDeadline(
+                    AnimalWithDeadlineReq.newBuilder()
+                            .setAnimal(Animal.newBuilder().setName("Zebra"))
+                            .build()
+            );
+            System.out.println(res.getResult());
+        } catch (StatusRuntimeException e) {
+            if (e.getStatus() == Status.DEADLINE_EXCEEDED) {
+                System.out.println("Deadline has been exceeded, we don't want the response");
+            } else {
+                e.printStackTrace();
+            }
+        }
+
+ //        first call (100ms deadline)
+        try {
+            System.out.println("Sending a request with a deadline of 100ms");
+            AnimalWithDeadlineRes res = blockingStub.withDeadline(Deadline.after(100, TimeUnit.MILLISECONDS)).setClassesWithDeadline(
+                    AnimalWithDeadlineReq.newBuilder()
+                            .setAnimal(Animal.newBuilder().setName("Dog"))
+                            .build()
+            );
+            System.out.println(res.getResult());
+        } catch (StatusRuntimeException e) {
+            if (e.getStatus() == Status.DEADLINE_EXCEEDED) {
+                System.out.println("Deadline has been exceeded, we don't want the response");
+            } else {
+                e.printStackTrace();
+            }
         }
     }
 

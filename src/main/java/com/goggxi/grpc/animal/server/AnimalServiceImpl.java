@@ -1,6 +1,7 @@
 package com.goggxi.grpc.animal.server;
 
 import com.proto.animal.*;
+import io.grpc.Context;
 import io.grpc.stub.StreamObserver;
 
 public class AnimalServiceImpl extends AnimalServiceGrpc.AnimalServiceImplBase {
@@ -13,7 +14,7 @@ public class AnimalServiceImpl extends AnimalServiceGrpc.AnimalServiceImplBase {
         String classesAnimal = animal.getClasses();
 
 //        create the response
-        String result = nameAnimal + " is a " + classesAnimal;
+        String result = nameAnimal + " adalah " + classesAnimal;
         AnimalRes res = AnimalRes.newBuilder()
                 .setResult(result)
                 .build();
@@ -109,5 +110,37 @@ public class AnimalServiceImpl extends AnimalServiceGrpc.AnimalServiceImplBase {
         };
 
         return reqStreamObserver;
+    }
+
+    @Override
+    public void setClassesWithDeadline(AnimalWithDeadlineReq request, StreamObserver<AnimalWithDeadlineRes> responseObserver) {
+
+        Context context = Context.current();
+
+       try {
+           for (int i = 0; i < 3; i++) {
+               if(!context.isCancelled()){
+                   System.out.println("Sleep for 100ms");
+                   Thread.sleep(100);
+               } else {
+                   return;
+               }
+           }
+
+           System.out.println("Send response");
+           responseObserver.onNext(
+                   AnimalWithDeadlineRes.newBuilder()
+                           .setResult("Animal is " +  request.getAnimal().getName())
+                           .build()
+           );
+
+           responseObserver.onCompleted();
+
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       }
+
+
+
     }
 }
